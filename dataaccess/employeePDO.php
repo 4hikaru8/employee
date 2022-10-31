@@ -1,8 +1,8 @@
 <?php
 // データベース接続
 function db_open(): PDO{
-    $user = 'benchi_guest';
-    $password = 'benchguest';
+    $user = 'root';// xserver='benchi_guest'
+    $password = '';// xserver='benchguest'
     $opt = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_EMULATE_PREPARES => false,
@@ -10,7 +10,8 @@ function db_open(): PDO{
     ];
     try {
         // PDOオブジェクトを生成
-    $dbh = new PDO('mysql:host=localhost;dbname=benchi_jinjidb', $user, $password, $opt);
+        // xserver='mysql:host=localhost;dbname=benchi_jinjidb'
+    $dbh = new PDO('mysql:host=localhost;dbname=jinji_db', $user, $password, $opt);
 
     } catch (PDOException $e) {
         $message = 'エラー!: ' . stringHTML($e->getMessage()) . '<br>';
